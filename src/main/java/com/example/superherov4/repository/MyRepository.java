@@ -42,6 +42,9 @@ public class MyRepository {
         }
     }
 
+    public Superhero  () {  //localhost:8080/superhelte/batman
 
+
+    }
 }
 

@@ -24,6 +24,9 @@ public class MyController {
         List<Superhero> superheroesList = myService.getSuperheroes();
         return new ResponseEntity<>(superheroesList, HttpStatus.OK);
     }
+    @GetMapping(path = "/superheroes/superpower/count/{navn}")
+
+
 
 
 }
