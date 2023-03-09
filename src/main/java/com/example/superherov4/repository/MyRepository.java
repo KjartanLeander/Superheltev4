@@ -1,9 +1,8 @@
-package Repository;
+package com.example.superherov4.repository;
 
-import Model.Superhero;
+import com.example.superherov4.model.Superhero;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-import org.yaml.snakeyaml.events.Event;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class MyRepository {
     @Value("${spring.datasource.password}")
     private String pwd;
 
-    public List<Superhero> getSuperheroes() {
+    public List<Superhero> getSuperheroes() { //localhost:8081/superhelte
         List<Superhero> superheroes = new ArrayList<>();
         try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
             String SQL = "SELECT SUPERHERO_ID, HERO_NAME, REAL_NAME, CREATION_YEAR, SUPERPOWER_ID, CITY_ID FROM SUPERHERO;";
@@ -42,5 +41,7 @@ public class MyRepository {
             throw new RuntimeException(e);
         }
     }
+
+
 }
 

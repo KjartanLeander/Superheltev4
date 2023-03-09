@@ -1,7 +1,7 @@
-package Controller;
+package com.example.superherov4.controller;
 
-import Model.Superhero;
-import Service.MyService;
+import com.example.superherov4.model.Superhero;
+import com.example.superherov4.service.MyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class MyController {
         this.myService = myService;
     }
 
-    @GetMapping(path = "superheroes")     //localhost:8081/kea/superheroes
+    @GetMapping(path = "/superheroes")
     public ResponseEntity<List<Superhero>> getSuperheroes() {
         List<Superhero> superheroesList = myService.getSuperheroes();
         return new ResponseEntity<>(superheroesList, HttpStatus.OK);
