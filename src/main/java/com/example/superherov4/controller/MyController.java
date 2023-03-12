@@ -1,5 +1,7 @@
 package com.example.superherov4.controller;
 
+import com.example.superherov4.DTO.CityDTO;
+import com.example.superherov4.DTO.HeroPowerDTO;
 import com.example.superherov4.model.Superhero;
 import com.example.superherov4.service.MyService;
 import org.springframework.http.HttpStatus;
@@ -24,10 +26,16 @@ public class MyController {
         List<Superhero> superheroesList = myService.getSuperheroes();
         return new ResponseEntity<>(superheroesList, HttpStatus.OK);
     }
-    @GetMapping(path = "/superheroes/superpower/count/{navn}")
-
-
-
+    @GetMapping(path = "/superheroes/superpower/{name}")
+    public ResponseEntity<HeroPowerDTO> heroPowerByName(@PathVariable String name){
+        HeroPowerDTO heroPowerDTO = myService.heroPowerDTO(name);
+        return new ResponseEntity<>(heroPowerDTO,HttpStatus.OK);
+    }
+    @GetMapping(path = "/city/{name}")
+    public ResponseEntity<CityDTO> cityByHeroName(@PathVariable String name){
+        CityDTO cityDTO = myService.cityDTO(name);
+        return new ResponseEntity<>(cityDTO,HttpStatus.OK);
+    }
 
 }
 

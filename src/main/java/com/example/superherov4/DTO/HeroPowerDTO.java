@@ -1,7 +1,7 @@
 package com.example.superherov4.DTO;
 
-public class DTO {
-    public DTO(String heroName, String realName, String superPower) {
+public class HeroPowerDTO {
+    public HeroPowerDTO(String heroName, String realName, String superPower) {
         this.heroName = heroName;
         this.realName = realName;
         this.superPower = superPower;
