@@ -1,6 +1,7 @@
 package com.example.superherov4.repository;
 
 import com.example.superherov4.DTO.CityDTO;
+import com.example.superherov4.DTO.CountPowerDTO;
 import com.example.superherov4.DTO.HeroPowerDTO;
 import com.example.superherov4.model.Superhero;
 import org.springframework.beans.factory.annotation.Value;
@@ -80,10 +81,29 @@ public class MyRepository {
         }
     }
 
+    public CountPowerDTO heroPowerCount(String name){
+        CountPowerDTO countPowerDTO = null;
+        try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
+            String SQL = "SELECT superhero.hero_name, COUNT(superpower.superpower_id) AS superpowerCount FROM superhero JOIN superpower ON superhero.superhero_id = superpower.superpower_id WHERE superhero.hero_name = ? GROUP BY superhero.hero_name;";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            pstmt.setString(1, name);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String heroName = rs.getString("HERO_NAME");
+                int countpower = rs.getInt("superpowerCount");
+                countPowerDTO = new CountPowerDTO(heroName,countpower);
+            }
+            return countPowerDTO;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    }
 
 
 
-}
+
+
 
 
 

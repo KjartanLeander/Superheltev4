@@ -1,6 +1,7 @@
 package com.example.superherov4.controller;
 
 import com.example.superherov4.DTO.CityDTO;
+import com.example.superherov4.DTO.CountPowerDTO;
 import com.example.superherov4.DTO.HeroPowerDTO;
 import com.example.superherov4.model.Superhero;
 import com.example.superherov4.service.MyService;
@@ -36,6 +37,10 @@ public class MyController {
         CityDTO cityDTO = myService.cityDTO(name);
         return new ResponseEntity<>(cityDTO,HttpStatus.OK);
     }
-
+    @GetMapping(path = "/superpower/count/{name}")
+    public ResponseEntity<CountPowerDTO> powerCountByName(@PathVariable("name") String name) {
+        CountPowerDTO countPowerDTO = myService.countPowerDTO(name);
+        return new ResponseEntity<>(countPowerDTO, HttpStatus.OK);
+    }
 }
 
