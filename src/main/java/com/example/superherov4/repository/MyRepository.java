@@ -23,7 +23,7 @@ public class MyRepository implements Irepository {
     @Value("${spring.datasource.password}")
     private String pwd;
 
-    public List<Superhero> getSuperheroes() { //localhost:8081/superhelte
+    public List<Superhero> getSuperheroes() {
         List<Superhero> superheroes = new ArrayList<>();
         try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
             String SQL = "SELECT SUPERHERO_ID, HERO_NAME, REAL_NAME, CREATION_YEAR, SUPERPOWER_ID, CITY_ID FROM SUPERHERO;";

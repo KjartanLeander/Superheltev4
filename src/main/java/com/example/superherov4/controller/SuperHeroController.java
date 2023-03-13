@@ -14,11 +14,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "kea")
-public class MyController {
+public class SuperHeroController {
 
     private MyService myService;
 
-    public MyController(MyService myService) {
+    public SuperHeroController(MyService myService) {
         this.myService = myService;
     }
 
