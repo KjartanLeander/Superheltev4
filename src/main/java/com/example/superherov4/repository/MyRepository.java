@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class MyRepository {
+public class MyRepository implements Irepository {
 
     @Value("${spring.datasource.url}")
     private String db_url;
@@ -98,6 +98,7 @@ public class MyRepository {
             throw new RuntimeException(e);
         }
     }
+
     }
 
 
